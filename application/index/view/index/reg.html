@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>登记个人信息</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+
+
+<link rel="stylesheet" href="__CSS__/weui.css">
+<link rel="stylesheet" href="__CSS__/jquery-weui.css">
+<link rel="stylesheet" href="__CSS__/demos.css">
+<style>
+#userimg img{border-radius:55px} 
+</style>
+
+
+<script type="text/javascript">
+  function ck() {
+   var name = document.getElementById("name").value;
+    //学号格式
+   if(name==""){
+    alert("姓名不能为空");
+    return false;
+   }
+   return true;
+  }
+</script>
+
+
+  </head>
+
+  <body ontouchstart>
+
+
+    <header class='demos-header'>
+      <h1 class="demos-title">输入个人信息</h1>
+    </header>
+    
+  <div id="userimg" align="center">                                    
+        <img src="__STATIC__/img/head.jpg" width="100px" height="100px" >
+     </div>
+<br/>
+   
+    
+
+    <form onsubmit="return ck()" action="{:url('Reg/index')}" method="post">
+      
+    <div class="weui-cells weui-cells_form">
+      <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">姓名</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="text" placeholder="姓名" required="required" name="name" id="name"/>
+        </div>
+
+      </div>
+
+      <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">工号</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="text" placeholder="工号" required="required" name="openid" id="openid"/>
+        </div>
+
+      </div>
+      
+  
+
+      <!-- <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">电话</label></div>
+        <div class="weui-cell__bd">
+          <input class="weui-input" type="number" placeholder="请输入电话" required="required" name="tel"/>
+        </div>
+        
+      </div> -->
+
+      <div class="weui-cell weui-cell_select weui-cell_select-after">
+        <div class="weui-cell__hd">
+          <label for="" class="weui-label">工作组</label>
+        </div>
+        <div class="weui-cell__bd">
+          <select class="weui-select" name="yx">
+            <option value="会计学院">会计学院</option>
+            <option value="经济与金融系">经济与金融系</option>
+            <option value="文学系">文学系</option>
+            <option value="外语系">外语系</option>
+            <option value="艺术设计学系">艺术设计学系</option>
+            <option value="工商管理系">工商管理系</option>
+            <option value="公共管理系">公共管理系</option>
+            <option value="信息工程系">信息工程系</option>
+            <option value="教育学系">教育学系</option>
+            <option value="国际学院">国际学院</option>
+          </select>
+        </div>
+      </div>
+      
+
+     
+     
+    </div>
+    
+    <div class="weui-btn-area">
+      
+      <input class="weui-btn weui-btn_primary" type="submit" text="提交"></button>
+    </div>
+    </form>
+   <div class="weui-footer">
+  <p class="weui-footer__text weui-footer_fixed-bottom">Copyright © 院大学生新媒体发展中心</p>
+</div> 
+
+
+
+
+    
+
+   
+   
+
+   
+    
+
+   
+    
+    
+
+    
+
+
+
+    <script src="__JS__/jquery-2.1.4.js"></script>
+<script src="__JS__/fastclick.js"></script>
+<script>
+  $(function() {
+    FastClick.attach(document.body);
+    
+
+  });
+</script>
+
+<script src="__JS__/jquery-weui.js"></script>
+
+  </body>
+</html>
+

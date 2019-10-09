@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>答题</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+
+
+<link rel="stylesheet" href="__CSS__/weui.css">
+<link rel="stylesheet" href="__CSS__/jquery-weui.css">
+<link rel="stylesheet" href="__CSS__/demos.css">
+<style>
+#userimg img{border-radius:55px}
+
+.b1{
+  width: 80%;
+  height: 430px;
+  /*background-color: #FFF;*/
+  
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /*border: 1px solid black;*/
+background-color:#000000;/* IE6和部分IE7内核的浏览器(如QQ浏览器)下颜色被覆盖 */
+ background-color:rgba(0,0,0,0.2); /* IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂，但解析为透明 */
+
+} 
+
+.title{
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color:#FFF;
+  float:center;
+  margin-right: 40px;
+
+}
+.ms{
+  
+  margin-top: 5px;
+  border-top:1px solid gray;
+}
+body{
+  background-image:url("__STATIC__/img/bg.jpg");
+
+  
+  background-repeat:no-repeat;
+  background-size:100% 100%;-moz-background-size:100% 100%;
+
+}
+</style>
+
+  </head>
+
+ <!--  <body ontouchstart style="background-color:#FFFF99;"> -->
+ <body ontouchstart>
+
+
+
+
+    <div class="b1">
+      <div style="float:left"><img src="__STATIC__/img/head.jpg" width="40" height="40" style="border-radius:55px;margin-top:20px;margin-left:20px;"><!-- <span style="font-size: 20px;
+  font-weight: bold;
+  color:#FFF;margin-left:20%;">线上答题</span> --></div>
+      <div class="title" >线上答题</div>
+      
+      
+      <div class="ms">
+
+        <p style="font-size:14px;margin-left:15px;margin-top:15px;"><span style="color:#fff">满分：100分</span></p>
+        <p style="font-size:14px;margin-left:15px;margin-top:15px;"><span style="color:#fff">题量：共25题</span></p>
+        <p style="font-size:14px;margin-left:15px;margin-top:15px;"><span style="color:#fff">活动时间：5月3日-5月8日22:00</span></p>
+        <!-- <p style="font-size:14px;margin-left:15px;margin-top:15px;"><span style="color:#fff">出卷：大学生新媒体发展中心</span></p> -->
+       
+         <p style="font-size:14px;margin-left:15px;margin-top:15px;"><span style="color:#fff">活动主题：五四精神，传承有我</span></p>
+         <p style="font-size:14px;margin-left:15px;margin-top:15px;"><span style="color:#fff">活动规则：本次答题活动共25题，答对20题及以上即可提供本次活动参加证明，综合测评具体加分由各院系评定。每位用户每天可答题一次，及格后不可重复答题。若当次答题未达到80分，可在第二天（0点后）重新答题。</span></p>
+        
+        
+      </div>
+      <br /><br />
+     <form method="post" action="{:url('dt/index')}">
+
+      <div class="weui-btn-area">
+      <input class="weui-input" type="hidden"  required="required" name="openid" value="{$openid}" />
+        <input class="weui-btn weui-btn_primary" type="submit" value="开始答题">
+      </div>
+    </form>
+    </div>
+
+   
+   
+
+   
+    
+
+   
+    
+    
+
+    
+
+
+
+    <script src="__JS__/jquery-2.1.4.js"></script>
+<script src="__JS__/fastclick.js"></script>
+<script>
+  $(function() {
+    FastClick.attach(document.body);
+  });
+</script>
+
+<script src="__JS__/jquery-weui.js"></script>
+
+  </body>
+</html>

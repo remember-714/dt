@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>答题</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+
+
+<link rel="stylesheet" href="__CSS__/weui.css">
+<link rel="stylesheet" href="__CSS__/jquery-weui.css">
+<link rel="stylesheet" href="__CSS__/demos.css">
+<style>
+#userimg img{border-radius:55px}
+
+.b1{
+  /*width: 80%;
+  height: 430px;
+  background-color: #FFF5F7;
+  
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;*/
+  /*border: 1px solid black;*/
+  width:90%;
+  height:480px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+} 
+
+.title{
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.ms{
+  margin-top: 35px;
+}
+.weui_btn_plain_primary {
+    color: #04be02;
+    border: 1px solid #04be02;
+}
+.btnq{
+  margin-top: 5%;
+  height:300px;
+}
+.true{
+  background-color:#90EE90;
+}
+.false{
+  background-color:#FA8072;
+}
+body{
+  background-image:url("__STATIC__/img/tbg.jpg");
+  background-repeat:no-repeat;
+  background-size:100% 100%;-moz-background-size:100% 100%;
+}
+
+</style>
+
+  </head>
+
+  <body ontouchstart>
+
+
+
+
+   
+   
+
+   
+<!--     <div style="width:100%;height:480px;margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;"> -->
+
+   {volist name="res" id="vo" key="k" }
+        {if condition="$k eq '1'"}
+            <div class="b1"id="t{$k}">
+            {else /}<div class="b1" style="display:none;"  id="t{$k}">
+          {/if}
+        <div class="weui-panel weui-panel_access" style="background-color:#000000;background-color:rgba(0,0,0,0.2);border-left:1px solid #E5E5E5;border-right:1px solid #E5E5E5;">
+        <div class="weui-panel__hd">单选题 <span style="float:right">当前第{$k}题/共{$num}题</span></div>
+        <hr>
+        <div class="weui-panel__bd" style="margin-top:3%" >
+          <input type="hidden" id="openid" value="{$openid}">
+
+           <input type="hidden" id="a{$k}" value="{$vo.trueoption}">   <!-- 正确答案 -->
+           
+            <div class="weui-media-box__bd" style="margin-bottom:3%">
+              <h4 class="weui-media-box__title" style="margin-left:3%;font-size:16px;color:#fff">{$k}.{$vo.title}</h4>
+              
+            </div>
+          
+         
+        </div>
+      </div>
+
+      <div class="btnq">
+        {if condition="$vo.optiona neq ''"}
+        <a id="A" class="weui-btn weui_btn_plain_primary" style="width:90%;font-size:14px;text-align:left" href="javascript:void(0)">{$vo.optiona}</a>
+        {/if}
+        {if condition="$vo.optionb neq ''"}
+        <a id="B" class="weui-btn weui_btn_plain_primary" style="width:90%;font-size:14px;text-align:left" href="javascript:void(0)">{$vo.optionb}</a>
+        {/if}
+        {if condition="$vo.optionc neq ''"}
+        <a id="C" class="weui-btn weui_btn_plain_primary" style="width:90%;font-size:14px;text-align:left" href="javascript:void(0)">{$vo.optionc}</a>
+        {/if}
+        {if condition="$vo.optiond neq ''"}
+        <a id="D" class="weui-btn weui_btn_plain_primary" style="width:90%;font-size:14px;text-align:left" href="javascript:void(0)">{$vo.optiond}</a>
+        {/if}
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {/volist}
+    
+<!-- </div> -->
+
+
+
+
+    
+
+
+
+    <script src="__JS__/jquery-2.1.4.js"></script>
+<script src="__JS__/fastclick.js"></script>
+<script>
+  $(function() {
+    FastClick.attach(document.body);
+       
+    var j=1;
+    var k=0;
+    var a = new Array();  //用户判断第几题
+    for(var i=0;i<10;i++)
+    {
+      a[i]=i+1;
+    }
+    var score=0;  //分数
+    var ts=0;     //题数
+    // console.log(openid);
+  
+  
+
+    $("a").click(function (e){ 
+        var id=e.target.id;  
+        var as=$("#a"+a[k]).val();   //正确答案的值
+
+        if(id==as)
+        {
+          $(this).addClass("true");    //添加绿色css效果 表示答对
+          score=score+4;
+          ts++;
+        
+          
+        }else{
+          $(this).addClass("false");
+          
+        }
+        $(this).parents("div").delay(50).hide(0); //延迟隐藏，避免css效果显示不处理
+
+        var next='t'+a[j];
+        $("#"+next).delay(60).show(0);
+        j++;
+        k++;
+        
+        //console.log(k);
+        if($.inArray(k+1, a)==-1)     //判断是否回答完毕
+        {
+          var openid=$("#openid").val();
+          //alert("你的得分是"+score);
+          window.location.href='http://127.0.0.1/dt/public/index/zf/index/?ts='+ts+'&score='+score+'&openid='+openid; 
+          return;
+        }
+        
+        
+    });
+});
+
+
+</script>
+
+<script src="__JS__/jquery-weui.js"></script>
+
+  </body>
+</html>
